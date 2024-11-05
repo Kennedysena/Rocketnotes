@@ -10,8 +10,10 @@ export function Header() {
           <span>Bem-vindo</span>
           <strong>Kennedy Sena</strong>
         </div>
-          </Profiler>
-          <Logout><RiShutDownLine/></Logout>
+      </Profiler>
+      <Logout>
+        <RiShutDownLine />
+      </Logout>
     </Container>
   );
 }

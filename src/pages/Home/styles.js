@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 25.0rem auto;
+  grid-template-columns: 25rem auto;
   grid-template-rows: 10.5rem 12.8rem auto 6.4rem;
   grid-template-areas:
     "brand header"
@@ -26,11 +26,10 @@ export const Brand = styled.div`
   border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   > h1 {
-      font-size: 2.4rem;
-      font-weight: bold;
-      color: ${({ theme }) => theme.COLORS.ORANGE};
-      margin: 3.4rem 0  3.5rem 0;
-      
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+    margin: 3.4rem 0 3.5rem 0;
   }
 `;
 export const Menu = styled.ul`
@@ -39,15 +38,13 @@ export const Menu = styled.ul`
   padding-top: 6.4rem;
   text-align: center;
 
-  >li {
+  > li {
     margin-bottom: 2.4rem;
   }
-  
 `;
 export const Search = styled.div`
   grid-area: search;
   padding: 6.4rem 6.4rem 0;
- 
 `;
 export const Content = styled.div`
   grid-area: content;
@@ -67,5 +64,4 @@ export const NewNote = styled.button`
   > svg {
     margin-right: 0.8rem;
   }
-  
 `;
