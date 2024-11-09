@@ -1,8 +1,9 @@
-import { Background, Container, Form } from "./styles";
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
+import { Background, Container, Form } from "./styles";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 export function SignIn() {
   return (

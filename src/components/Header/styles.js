@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.header`
@@ -13,7 +14,7 @@ export const Container = styled.header`
   padding: 0 8rem;
 `;
 
-export const Profiler = styled.div`
+export const Profiler = styled(Link)`
   display: flex;
   align-items: center;
 
@@ -22,6 +23,7 @@ export const Profiler = styled.div`
     height: 5.6rem;
     border-radius: 50%;
   }
+  
   > div {
     display: flex;
     flex-direction: column;

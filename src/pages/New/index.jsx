@@ -1,10 +1,10 @@
+import { Container, Form } from "./styles";
+import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { NoteItem } from "../../components/NoteItem";
-import { Textarea } from "../../components/Textarea";
 import { Section } from "../../components/Section";
-import { Container, Form } from "./styles";
-import { Button } from "../../components/Button";
+import { Textarea } from "../../components/Textarea";
 
 export function New() {
   return (

@@ -1,4 +1,5 @@
 import { FiPlus, FiX } from "react-icons/fi";
+
 import { Container } from "./styles";
 
 export function NoteItem({ isNew, value, onClick, ...rest }) {
