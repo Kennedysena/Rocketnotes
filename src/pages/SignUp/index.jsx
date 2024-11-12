@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Background, Container, Form } from "./styles";
 import { Button } from "../../components/Button";
@@ -12,23 +12,27 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSignUp() {
-    if (!name || !email || !password) {
-      alert("Preencha todos os campos");
-      return;
+  const navigate = useNavigate();
+
+  function handleSignUp(event) {
+    event.preventDefault();
+    if (!name || !email || !password) { // ! negação, significa que tm campo vazio
+      return alert("Preencha todos os campos"); // parou a função e não executa o restante
     }
 
-    api.post("/users", { name, email, password })
-    .then(() => {
-      alert("Usuário cadastrado com sucesso!");
-    })
-    .catch(error => {
-      if (error.response) {
-        alert(error.response.data.message);
-      } else {
-        alert("Erro ao cadastrar usuário");
-      }
-    });
+    api
+      .post("/users", { name, email, password })
+      .then(() => { // then  a gente verifica se deu certo
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
+      })
+      .catch((error) => { // catch a gente verifica se deu errado
+        if (error.response) {
+          alert(error.response.data.message); // mensagem de erro vinda com do back end por meio do json 
+        } else {
+          alert("Nao foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
+        }
+      });
   }
   return (
     <Container>
