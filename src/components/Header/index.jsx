@@ -7,7 +7,7 @@ export function Header() {
   const { signOut } = useAuth();
   return (
     <Container>
-      <Profiler>
+      <Profiler to="/profile">
         <img src="https://github.com/Kennedysena.png" alt="Foto de perfil" />
         <div>
           <span>Bem-vindo</span>

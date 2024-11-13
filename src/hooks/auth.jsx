@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -6,7 +6,7 @@ import { api } from "../services/api";
 
 export const AuthContext = createContext({});
 
-export function AuthProvider({ children }) {
+function AuthProvider({ children }) {
   const [data, setData] = useState("");
 
   async function signIn({ email, password }) {
@@ -36,6 +36,25 @@ export function AuthProvider({ children }) {
     setData({});
   }
 
+  async function updateProfile({ user }) {
+    try {
+      await api.put("/users", user);
+      localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+
+      setData({
+        user,
+        token: data.token,
+      });
+      toast.success("Perfil atualizado!");
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Nao foi possível atualizar o perfil");
+      }
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("@rocketnotes:token");
     const user = localStorage.getItem("@rocketnotes:user");
@@ -46,13 +65,16 @@ export function AuthProvider({ children }) {
     }
   }, []);
   return (
-    <AuthContext.Provider value={{ signIn, user: data.user, signOut }}>
+    <AuthContext.Provider
+      value={{ signIn, signOut, updateProfile, user: data.user }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
+function useAuth() {
   const context = useContext(AuthContext);
   return context;
 }
+
+export { AuthProvider, useAuth };
