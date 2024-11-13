@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { Background, Container, Form } from "./styles";
 import { Button } from "../../components/Button";
@@ -16,21 +17,21 @@ export function SignUp() {
 
   function handleSignUp(event) {
     event.preventDefault();
-    if (!name || !email || !password) { // ! negação, significa que tm campo vazio
-      return alert("Preencha todos os campos"); // parou a função e não executa o restante
+    if (!name || !email || !password) { // ! negação, significa que tem campo vazio
+      return toast.error("Preencha todos os campos"); // parou a função e não executa o restante
     }
 
     api
       .post("/users", { name, email, password })
       .then(() => { // then  a gente verifica se deu certo
-        alert("Usuário cadastrado com sucesso!");
+        toast.success("Usuário cadastrado com sucesso!");
         navigate("/");
       })
       .catch((error) => { // catch a gente verifica se deu errado
         if (error.response) {
-          alert(error.response.data.message); // mensagem de erro vinda com do back end por meio do json 
+          toast.error(error.response.data.message); // mensagem de erro vinda com do back end por meio do json 
         } else {
-          alert("Nao foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
+          toast.error("Nao foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
         }
       });
   }

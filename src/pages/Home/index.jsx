@@ -13,7 +13,7 @@ export function Home() {
       <Brand>
         <h1>Rocketnotes</h1>
       </Brand>
-      <Header></Header>
+      <Header/>
       <Menu>
         <li>
           <ButtonText title="Todos" $isactive />

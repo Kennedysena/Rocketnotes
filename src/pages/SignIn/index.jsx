@@ -15,9 +15,6 @@ export function SignIn(){
   function handleSignIn(event) {
     event.preventDefault();
     signIn({ email, password });
-    if (!email || !password) {
-      return alert("Preencha todos os campos");
-    }
   }
 
   return (
