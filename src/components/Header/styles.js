@@ -23,7 +23,6 @@ export const Profiler = styled(Link)`
     height: 5.6rem;
     border-radius: 50%;
   }
-  
   > div {
     display: flex;
     flex-direction: column;

@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -36,8 +35,16 @@ function AuthProvider({ children }) {
     setData({});
   }
 
-  async function updateProfile({ user }) {
+  async function updateProfile({ user, avatarFile }) {
     try {
+      if (avatarFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("avatar", avatarFile);
+
+        const response = await api.patch("/users/avatar", fileUploadForm);
+        user.avatar = response.data.avatar;
+      }
+
       await api.put("/users", user);
       localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
 
