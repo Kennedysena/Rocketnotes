@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Avatar, Container, Form } from "./styles";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
@@ -15,6 +16,8 @@ export function Profile() {
   const [email, setEmail] = useState(user.email);
   const [oldPassword, setOldPassword] = useState();
   const [passwordNew, setPasswordNew] = useState();
+
+  const navigate = useNavigate();
 
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
@@ -50,7 +53,7 @@ export function Profile() {
       </header>
       <Form>
         <Avatar>
-          <img src={avatar} alt="Foto de perfil"/>
+          <img src={avatar} alt="Foto de perfil" />
           <label htmlFor="avatar">
             <FiCamera />
             <input type="file" id="avatar" onChange={handleChangeAvatar} />
@@ -87,6 +90,7 @@ export function Profile() {
           onClick={(event) => {
             event.preventDefault();
             handleUpdate();
+            navigate("/");
           }}
         />
       </Form>
