@@ -1,10 +1,14 @@
 import { Container } from "./styles";
 import { Tag } from "../Tag";
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export function Note({ data, ...rest }) {
   return (
     <Container {...rest}>
-      <h1>{data.title}</h1>
+      <h1>{capitalizeFirstLetter(data.title)}</h1>
 
       {data.tags && (
         <footer>

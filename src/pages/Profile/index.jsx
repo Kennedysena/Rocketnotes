@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { Avatar, Container, Form } from "./styles";
@@ -26,14 +25,16 @@ export function Profile() {
   const [avatarFile, setAvatarFile] = useState(null);
 
   async function handleUpdate() {
-    const user = {
+    const updated = {
       name,
       email,
       password: passwordNew,
       old_password: oldPassword,
     };
 
-    await updateProfile({ user, avatarFile });
+    const userUpdated = Object.assign(user, updated);
+
+    await updateProfile({ user: userUpdated, avatarFile });
   }
 
   async function handleChangeAvatar(event) {
@@ -44,12 +45,16 @@ export function Profile() {
     setAvatar(imagePreview);
   }
 
+  function handleBack() {
+    navigate(-1);
+  }
+
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button type="button" onClick={handleBack}>
           <FiArrowLeft />
-        </Link>
+        </button>
       </header>
       <Form>
         <Avatar>

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Container, Form } from "./styles";
 import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { NoteItem } from "../../components/NoteItem";
@@ -22,6 +23,10 @@ export function New() {
   const [newTag, setNewTag] = useState("");
 
   const navigate = useNavigate();
+
+  function handleBack() {
+    navigate(-1);
+  }
 
   function handleAddLink() {
     setLinks((prevState) => [...prevState, newLink]);
@@ -65,7 +70,7 @@ export function New() {
       })
       .then(() => {
         toast.success("Nota criada com sucesso!");
-        navigate("/");
+        navigate(-1);
       })
       .catch((error) => {
         if (error.response) {
@@ -83,7 +88,9 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <Link to="/">voltar</Link>
+            <ButtonText
+              title="Voltar"
+              onClick={handleBack} />
           </header>
           <Input
             placeholder="Titulo"
