@@ -51,15 +51,18 @@ export function New() {
     if (!title) {
       return toast.error("Digite o título da nota");
     }
-    
+
     if (newLink) {
-      return toast.error("Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.");
+      return toast.error(
+        "Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.",
+      );
     }
 
     if (newTag) {
-      return toast.error("Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.");
+      return toast.error(
+        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.",
+      );
     }
-
 
     await api
       .post("/notes", {
@@ -88,9 +91,7 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <ButtonText
-              title="Voltar"
-              onClick={handleBack} />
+            <ButtonText title="Voltar" onClick={handleBack} />
           </header>
           <Input
             placeholder="Titulo"

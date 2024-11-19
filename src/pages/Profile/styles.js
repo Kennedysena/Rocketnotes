@@ -12,16 +12,16 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 0 12.4rem;
-  
-  svg {
-    color: ${({ theme }) => theme.COLORS.GRAY_100};
-    font-size: 2.4rem;
+
+    svg {
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
+      font-size: 2.4rem;
+    }
+    button {
+      background: none;
+      border: none;
+    }
   }
-  button {
-    background: none;
-    border: none;
-  }
-}
 `;
 
 export const Form = styled.form`

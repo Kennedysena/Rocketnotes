@@ -17,19 +17,22 @@ export function SignUp() {
 
   function handleSignUp(event) {
     event.preventDefault();
-    if (!name || !email || !password) { // ! negação, significa que tem campo vazio
+    if (!name || !email || !password) {
+      // ! negação, significa que tem campo vazio
       return toast.error("Preencha todos os campos"); // parou a função e não executa o restante
     }
 
     api
       .post("/users", { name, email, password })
-      .then(() => { // then  a gente verifica se deu certo
+      .then(() => {
+        // then  a gente verifica se deu certo
         toast.success("Usuário cadastrado com sucesso!");
         navigate("/");
       })
-      .catch((error) => { // catch a gente verifica se deu errado
+      .catch((error) => {
+        // catch a gente verifica se deu errado
         if (error.response) {
-          toast.error(error.response.data.message); // mensagem de erro vinda com do back end por meio do json 
+          toast.error(error.response.data.message); // mensagem de erro vinda com do back end por meio do json
         } else {
           toast.error("Nao foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
         }

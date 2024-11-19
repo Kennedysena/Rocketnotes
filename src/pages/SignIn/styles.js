@@ -41,5 +41,4 @@ export const Background = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  
 `;

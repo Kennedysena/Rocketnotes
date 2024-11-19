@@ -12,7 +12,6 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     overflow-y: auto;
-    
   }
 
   .tags {
