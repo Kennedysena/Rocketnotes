@@ -1,5 +1,6 @@
 import { RiShutDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { Container, Profiler, Logout } from "./styles";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
@@ -18,6 +19,7 @@ export function Header() {
   function handleSignOut() {
     navigate("/");
     signOut();
+    toast.success("Logout efetuado com sucesso!");
   }
 
   return (
