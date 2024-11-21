@@ -52,15 +52,23 @@ export function New() {
       return toast.error("Digite o título da nota");
     }
 
+    if (!description) {
+      return toast.error("Digite a descrição da nota");
+    }
+
+    if (!newTag && !newLink) {
+      return toast.error("Adicione pelo menos uma tag ou link");
+    }
+
     if (newLink) {
       return toast.error(
-        "Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.",
+        "Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio."
       );
     }
 
     if (newTag) {
       return toast.error(
-        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio.",
+        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio."
       );
     }
 
