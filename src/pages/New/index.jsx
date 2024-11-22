@@ -57,7 +57,7 @@ export function New() {
     }
 
     if (!newTag && !newLink) {
-      return toast.error("Adicione pelo menos uma tag ou link");
+      return toast.error("Adicione um link e uma tag");
     }
 
     if (newLink) {
