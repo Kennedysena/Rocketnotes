@@ -1,29 +1,40 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { Container, Links, Content } from "./style.js";
 import { Button } from "../../components/Button/index.jsx";
 import { ButtonText } from "../../components/ButtonText/index.jsx";
 import { Header } from "../../components/Header/index.jsx";
+import { Modal } from "../../components/Modal/index.jsx";
 import { Section } from "../../components/Section/index.jsx";
 import { Tag } from "../../components/Tag/index.jsx";
 import { api } from "../../services/api.js";
 
 export function Details() {
   const [data, setData] = useState(null);
+  const [isModalOpen, setIsOpenModal] = useState(false);
 
   const params = useParams();
   const navigate = useNavigate();
+
+  function handleOpenModal() {
+    setIsOpenModal(true);
+  }
+
+  function handleCloseModal() {
+    setIsOpenModal(false);
+  }
 
   function handleBack() {
     navigate(-1);
   }
 
   async function handleRemove() {
-    const confirm = window.confirm("Deseja realmente excluir essa nota?");
     if (confirm) {
       await api.delete(`/notes/${params.id}`).then(() => {
         navigate(-1);
+        toast.success("Nota excluída com sucesso!");
       });
     }
   }
@@ -42,7 +53,7 @@ export function Details() {
       {data && (
         <main>
           <Content>
-            <ButtonText title="Excluir nota" onClick={handleRemove} />
+            <ButtonText title="Excluir nota" onClick={handleOpenModal} />
             <h1>{data.title}</h1>
             <p>{data.description}</p>
 
@@ -70,6 +81,13 @@ export function Details() {
             <Button title="Voltar" onClick={handleBack} />
           </Content>
         </main>
+      )}
+      {isModalOpen && (
+        <Modal
+          title="Deseja realmente excluir essa nota ?"
+          onCancel={handleCloseModal}
+          onConfirm={handleRemove}
+        />
       )}
     </Container>
   );

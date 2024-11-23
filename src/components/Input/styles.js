@@ -12,10 +12,10 @@ export const Container = styled.div`
   border-radius: 10px;
 
   > input {
-    height: 56px;
+    height: 5.6rem;
     width: 100%;
 
-    padding: 12px;
+    padding: 1.2rem;
     color: ${({ theme }) => theme.COLORS.WHITE};
     background: transparent;
     border: 0;
@@ -27,5 +27,15 @@ export const Container = styled.div`
 
   > svg {
     margin-left: 16px;
+  }
+
+  > img {
+    border: none;
+    background: none;
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem 0rem 0;
   }
 `;

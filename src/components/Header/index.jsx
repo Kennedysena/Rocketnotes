@@ -1,20 +1,31 @@
+import { useState } from "react";
 import { RiShutDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Container, Profiler, Logout } from "./styles";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
+import { Modal } from "../../components/Modal/index.jsx";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 
 export function Header() {
   const { user, signOut } = useAuth();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
     : avatarPlaceholder;
+
+  function handleOpenModal() {
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
 
   function handleSignOut() {
     navigate("/");
@@ -31,9 +42,17 @@ export function Header() {
           <strong>{user.name}</strong>
         </div>
       </Profiler>
-      <Logout onClick={handleSignOut}>
+      <Logout onClick={handleOpenModal}>
         <RiShutDownLine />
       </Logout>
+
+      {isModalOpen && (
+        <Modal
+          title="Tem certeza que deseja sair da aplicação ?"
+          onCancel={handleCloseModal}
+          onConfirm={handleSignOut}
+        />
+      )}
     </Container>
   );
 }

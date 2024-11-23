@@ -52,13 +52,6 @@ export function New() {
       return toast.error("Digite o título da nota");
     }
 
-    if (!description) {
-      return toast.error("Digite a descrição da nota");
-    }
-
-    if (!newTag && !newLink) {
-      return toast.error("Adicione um link e uma tag");
-    }
 
     if (newLink) {
       return toast.error(
@@ -71,6 +64,10 @@ export function New() {
         "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio."
       );
     }
+
+      if (newTag === 0 && newLink === 0) {
+        return toast.error("Adicione um link e uma tag");
+      }
 
     await api
       .post("/notes", {
