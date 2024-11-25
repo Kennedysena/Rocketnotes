@@ -14,4 +14,10 @@ export const Container = styled.section`
     font-size: 2rem;
     font-weight: 400;
   }
+
+  >span {
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 `;

@@ -46,28 +46,28 @@ export function New() {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
-  async function handleNewNote(value) {
-    value.preventDefault();
+  async function handleNewNote(event) {
+    event.preventDefault();
+
     if (!title) {
       return toast.error("Digite o título da nota");
     }
 
-
     if (newLink) {
       return toast.error(
-        "Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio."
+        "Você deixou um link no campo para adicionar, mas não clicou em adicionar. Cliquem para adicionar ou deixem o campo vazio."
       );
     }
 
     if (newTag) {
       return toast.error(
-        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem adicionar ou deixem o campo vazio."
+        "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Cliquem para adicionar ou deixem o campo vazio."
       );
     }
 
-      if (newTag === 0 && newLink === 0) {
-        return toast.error("Adicione um link e uma tag");
-      }
+    if (!tags.length) {
+      return toast.error("Adicione pelo menos uma tag");
+    }
 
     await api
       .post("/notes", {
@@ -99,7 +99,7 @@ export function New() {
             <ButtonText title="Voltar" onClick={handleBack} />
           </header>
           <Input
-            placeholder="Titulo"
+            placeholder="Título"
             onChange={(event) => setTitle(event.target.value)}
           />
           <Textarea
@@ -117,11 +117,12 @@ export function New() {
             ))}
             <NoteItem
               isNew
-              placeholder="Novo link"
+              placeholder="Insira o link, ex: https://"
               value={newLink}
               onChange={(event) => setNewLink(event.target.value)}
               onClick={handleAddLink}
             />
+            <span>Clique no + para adicionar</span>
           </Section>
           <Section title="Marcadores">
             <div className="tags">
@@ -140,6 +141,7 @@ export function New() {
                 onClick={handleAddTag}
               />
             </div>
+              <span>Clique no + para adicionar</span>
           </Section>
           <Button title="Salvar" onClick={handleNewNote} />
         </Form>

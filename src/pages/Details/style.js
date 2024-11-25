@@ -36,12 +36,14 @@ export const Content = styled.div`
 
   > button:first-child {
     align-self: end;
+    font-size: 2rem;
   }
 
   > h1 {
     font-size: 3.6rem;
     font-weight: 500;
-    padding-top: 6.4rem;
+    padding-top: 4rem;
+    //padding-top: 6.4rem;
   }
 
   > p {

@@ -34,7 +34,7 @@ export function SignUp() {
         if (error.response) {
           toast.error(error.response.data.message); // mensagem de erro vinda com do back end por meio do json
         } else {
-          toast.error("Nao foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
+          toast.error("Não foi possível cadastrar"); // mensagem genérica de erro caso não cai no alert de cima
         }
       });
   }

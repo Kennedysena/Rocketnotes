@@ -33,24 +33,63 @@ export const Brand = styled.div`
     margin: 3.4rem 0 3.5rem 0;
   }
 `;
+
 export const Menu = styled.ul`
   grid-area: menu;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   padding-top: 6.4rem;
   text-align: center;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.COLORS.GRAY_300};
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    border: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  }
 
   > li {
     margin-bottom: 2.4rem;
   }
 `;
+
 export const Search = styled.div`
   grid-area: search;
   padding: 6.4rem 6.4rem 0;
 `;
+
 export const Content = styled.div`
   grid-area: content;
   padding: 0 6.4rem;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.COLORS.GRAY_300};
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar {
+    border: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  }
 `;
 
 export const NewNote = styled(Link)`

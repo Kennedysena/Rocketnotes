@@ -53,7 +53,7 @@ export function Details() {
       {data && (
         <main>
           <Content>
-            <ButtonText title="Excluir nota" onClick={handleOpenModal} />
+            <ButtonText title="Excluir Nota" onClick={handleOpenModal} />
             <h1>{data.title}</h1>
             <p>{data.description}</p>
 
