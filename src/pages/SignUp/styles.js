@@ -33,6 +33,12 @@ export const Form = styled.form`
     margin-top: 12.4rem;
     color: ${({ theme }) => theme.COLORS.ORANGE};
   }
+
+  > span {
+    font-size: 1.3rem;
+    color: ${({ theme }) => theme.COLORS.RED};
+    margin: 0 auto 1rem;
+  }
 `;
 
 export const Background = styled.div`

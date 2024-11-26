@@ -38,4 +38,16 @@ export const Container = styled.div`
     justify-content: center;
     margin: 0 2rem 0rem 0;
   }
+
+  button {
+   border: none;
+   background: none;
+   color: ${({ theme }) => theme.COLORS.GRAY_100};
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 0 2rem 0rem 0;
+
+  }
 `;
