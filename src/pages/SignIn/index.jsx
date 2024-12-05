@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import * as yup from "yup";
 
 import { Background, Container, Form } from "./styles";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useAuth } from "../../hooks/auth";
-import { api } from "../../services/api";
 
 export function SignIn() {
   const [email, setEmail] = useState("");
@@ -36,20 +34,12 @@ export function SignIn() {
 
   function handleSignIn(event) {
     event.preventDefault();
-    schema.validate({ email, password }, { abortEarly: false }).then(() => {
-      signIn({ email, password });
-      setErrors({});
-      api
-        .post("/sessions", { email, password })
-        .then(() => {
-          toast.success("Usuário logado com sucesso!");
-        })
-        .catch((error) => {
-          if (error.response) {
-            toast.error(error.response.data.message);
-          }
-        });
-    })
+    schema
+      .validate({ email, password }, { abortEarly: false })
+      .then(() => {
+        signIn({ email, password });
+        setErrors({});
+      })
       .catch((error) => {
         const validationErrors = {};
         error.inner.forEach((error) => {
@@ -58,7 +48,6 @@ export function SignIn() {
         setErrors(validationErrors);
       });
   }
-  
 
   return (
     <Container>
