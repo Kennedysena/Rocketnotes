@@ -11,6 +11,7 @@ export default [
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       globals: globals.browser,
+      globals: globals.node,
       parserOptions: {
         ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
