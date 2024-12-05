@@ -16,7 +16,7 @@ export const Container = styled.section`
   }
 
   >span {
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     font-size: 1.5rem;
     font-weight: 500;
   }
