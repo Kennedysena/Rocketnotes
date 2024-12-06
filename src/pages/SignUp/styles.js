@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import backgroundImg from "../../assets/background.png";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   height: 100vh;
@@ -20,6 +21,7 @@ export const Form = styled.form`
     font-size: 4.8rem;
     color: ${({ theme }) => theme.COLORS.ORANGE};
   }
+
   > h2 {
     font-size: 2.4rem;
     margin: 4.8rem 0;
@@ -39,6 +41,22 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.RED};
     margin: 0 auto 1rem;
   }
+
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 0 4rem 0 4rem;
+    margin: 0 auto;
+
+    > h1 {
+      font-size: 4.4rem;
+      color: ${({ theme }) => theme.COLORS.ORANGE};
+    }
+
+    > p {
+      font-size: 1.2rem;
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
+    }
+  }
 `;
 
 export const Background = styled.div`
@@ -47,4 +65,8 @@ export const Background = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
+  }
 `;

@@ -12,12 +12,6 @@ export const Container = styled.section`
     margin-bottom: 2.8rem;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
     font-size: 2rem;
-    font-weight: 400;
-  }
-
-  >span {
-    color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-    font-size: 1.5rem;
     font-weight: 500;
   }
 `;

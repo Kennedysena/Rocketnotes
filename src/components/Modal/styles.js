@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -46,5 +48,8 @@ export const ModalContent = styled.div`
       background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
       color: ${({ theme }) => theme.COLORS.WHITE};
     }
+  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    width: 37rem;
   }
 `;

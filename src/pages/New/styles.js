@@ -36,5 +36,9 @@ export const Form = styled.form`
       font-size: 2rem;
       color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
+
+    span {
+      
+    }
   }
 `;

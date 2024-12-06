@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -12,6 +14,7 @@ export const Container = styled.div`
     overflow-y: scroll;
     padding: 6.4rem 0;
   }
+
 `;
 
 export const Links = styled.ul`
@@ -50,5 +53,10 @@ export const Content = styled.div`
     font-size: 1.6rem;
     margin-top: 1.6rem;
     text-align: justify;
+  }
+
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 0 3rem;
   }
 `;

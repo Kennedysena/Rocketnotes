@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -15,6 +17,16 @@ export const Container = styled.div`
     "newnote content";
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header"
+      "search"
+      "content"
+      ;
+  }
 `;
 export const Brand = styled.div`
   grid-area: brand;
@@ -32,6 +44,10 @@ export const Brand = styled.div`
     color: ${({ theme }) => theme.COLORS.ORANGE};
     margin: 3.4rem 0 3.5rem 0;
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
+  }
 `;
 
 export const Menu = styled.ul`
@@ -42,7 +58,7 @@ export const Menu = styled.ul`
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: .5rem;
+    width: 0.5rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -62,11 +78,19 @@ export const Menu = styled.ul`
   > li {
     margin-bottom: 2.4rem;
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
+  }
 `;
 
 export const Search = styled.div`
   grid-area: search;
   padding: 6.4rem 6.4rem 0;
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 6.4rem 3rem 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -75,7 +99,7 @@ export const Content = styled.div`
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: .5rem;
+    width: 0.5rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -89,6 +113,10 @@ export const Content = styled.div`
 
   &::-webkit-scrollbar-track {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    padding: 0 3rem;
   }
 `;
 
@@ -104,5 +132,9 @@ export const NewNote = styled(Link)`
 
   svg {
     margin-right: 8px;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
   }
 `;
