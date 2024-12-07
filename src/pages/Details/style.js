@@ -15,6 +15,13 @@ export const Container = styled.div`
     padding: 6.4rem 0;
   }
 
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    > main {
+      padding: 2rem 0;
+      overflow-y: none;
+    }
+  }
+
 `;
 
 export const Links = styled.ul`
@@ -58,5 +65,11 @@ export const Content = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     padding: 0 3rem;
+
+     > button:first-child {
+    align-self: end;
+    font-size: 2rem;
+    margin-top: 2.1rem;
+  }
   }
 `;

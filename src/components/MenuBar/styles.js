@@ -18,11 +18,10 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    height: 78.4rem;
+    height: 100vh;
     grid-area: none;
     position: absolute;
     z-index: 1;
-
     transform: translate(-100%);
     transition: transform 0.3s ease-in-out;
     background: transparent;
@@ -87,10 +86,6 @@ export const Menu = styled.ul`
     margin-bottom: 2.4rem;
   }
 
-  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    
-    
-  }
 `;
 
 
@@ -104,14 +99,7 @@ export const NewNote = styled(Link)`
 
   svg {
     margin-right: 8px;
-  }
-
-  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-
-    margin-bottom: 1rem;
-    border-radius: 0 0 8px;
-  }
-  
+  }  
 `;
 
 export const Button = styled.button`
@@ -121,6 +109,5 @@ export const Button = styled.button`
   > svg {
     font-size: 4rem;
     color: ${({ theme }) => theme.COLORS.GRAY_300};
-    
   }
 `;
