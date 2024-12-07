@@ -18,7 +18,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    height: 100vh;
+    grid-template-rows: 8.5rem 12.8rem auto 6.4rem;
     grid-area: none;
     position: absolute;
     z-index: 1;

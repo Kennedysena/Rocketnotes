@@ -17,6 +17,7 @@ export const Container = styled.header`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     padding: 0 2.5rem;
+    height: 8.5rem;
   }
 `;
 
