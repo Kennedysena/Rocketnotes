@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { RiShutDownLine, RiMenuLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import { Container, Profiler, Logout, Menu } from "./styles";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
@@ -30,7 +29,6 @@ export function Header({ onOpenMenu}) {
   function handleSignOut() {
     navigate("/");
     signOut();
-    toast.success("Logout efetuado com sucesso!");
   }
 
   return (

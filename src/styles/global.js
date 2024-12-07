@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../styles/deviceBreakpoints";
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -12,6 +14,30 @@ export default createGlobalStyle`
 :root{
     font-size: 62.5%;
 }
+
+.Toastify__toast--success {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        height: 10.0rem;
+        font-size: 2rem;
+        font-family: 'Roboto Slab', sans-serif;
+
+    }
+}
+
+.Toastify__toast--error {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        height: 10.0rem;
+        font-size: 2rem;
+        font-family: 'Roboto Slab', sans-serif;
+    }
+}
+
 
 body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
@@ -37,3 +63,4 @@ button:hover, a:hover {
     filter: brightness(0.9);
 }
 `;
+

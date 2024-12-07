@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 10.5rem 12.8rem auto 6.4rem;
     grid-template-areas:
       "header"
       "search"
@@ -43,10 +43,6 @@ export const Brand = styled.div`
     font-weight: bold;
     color: ${({ theme }) => theme.COLORS.ORANGE};
     margin: 3.4rem 0 3.5rem 0;
-  }
-
-  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-    display: none;
   }
 `;
 
