@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
   width: 100%;
 
@@ -17,9 +19,19 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.GRAY_100};
       font-size: 2.4rem;
     }
+
     button {
       background: none;
       border: none;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+      padding: 0 4rem;
+      
+        svg {
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
+      font-size: 4rem;
+    }
     }
   }
 `;

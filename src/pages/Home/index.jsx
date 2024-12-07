@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { FiPlus, FiSearch } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
-import { Container, Brand, Menu, Search, Content, NewNote } from "./styles";
-import { ButtonText } from "../../components/ButtonText";
+import { Container,Search, Content} from "./styles";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
+import { MenuBar } from "../../components/MenuBar";
 import { Note } from "../../components/Note";
 import { Section } from "../../components/Section";
 import { api } from "../../services/api";
@@ -15,6 +15,7 @@ export function Home() {
   const [tags, setTags] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,29 +59,14 @@ export function Home() {
 
   return (
     <Container>
-      <Brand>
-        <h1>Rocketnotes</h1>
-      </Brand>
-      <Header />
-      <Menu>
-        <li>
-          <ButtonText
-            title="Todos"
-            onClick={() => handleTagSelected("all")}
-            isActive={tagsSelected.length === 0}
-          />
-        </li>
-        {tags &&
-          tags.map((tag) => (
-            <li key={String(tag.id)}>
-              <ButtonText
-                title={tag.name}
-                onClick={() => handleTagSelected(tag.name)}
-                isActive={tagsSelected.includes(tag.name)}
-              />
-            </li>
-          ))}
-      </Menu>
+      <Header onOpenMenu={() => setMenuIsOpen(true)}/>
+      <MenuBar
+        tags={tags}
+        tagsSelected={tagsSelected}
+        handleTagSelected={handleTagSelected}
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
       <Search>
         <Input
           placeholder="Pesquisar pelo título"
@@ -99,10 +85,6 @@ export function Home() {
           ))}
         </Section>
       </Content>
-      <NewNote to="/new">
-        <FiPlus />
-        Criar nota
-      </NewNote>
     </Container>
   );
 }

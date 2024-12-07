@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { RiShutDownLine } from "react-icons/ri";
+import { RiShutDownLine, RiMenuLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Container, Profiler, Logout } from "./styles";
+import { Container, Profiler, Logout, Menu } from "./styles";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
 import { Modal } from "../../components/Modal/index.jsx";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 
-export function Header() {
+export function Header({ onOpenMenu}) {
   const { user, signOut } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -35,6 +35,9 @@ export function Header() {
 
   return (
     <Container>
+      <Menu onClick={onOpenMenu}>
+      <RiMenuLine />
+      </Menu>
       <Profiler to="/profile">
         <img src={avatarUrl} alt={user.name} />
         <div>
